@@ -1,0 +1,47 @@
+service: ${env:APP_NAME}
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${env:STAGE}
+  region: ${env:AMZ_REGION}
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: ${env:DOMAIN_NAME}
+    basePath: ''
+    stage: ${env:STAGE}
+    createRoute53Record: false
+    certificateName: ${env:SSL_CERT_NAME}
+    endpointType: 'regional'
+  serverless-offline:
+    port: ${env:PORT}
+    host: ${env:HOST}
+  dotenv:
+    include:
+      - ENVIRONMENT
+      - APP_NAME
+      - NODE_ENV
+      - STAGE
+      - DB_CONNECTION
+      - PORT
+      - DB_HOST
+      - DB_DATABASE
+      - DIALECT
+      - DB_PORT
+      - HOST
+      - SSL_CERT_NAME
+      - DOMAIN_NAME
+      - AMZ_REGION
+
+
+functions:
+  app:
+    handler: server.app
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
