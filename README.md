@@ -18,6 +18,14 @@ Built in implemented features.
 - Express
 
 
+### Quick start
+```sh
+cp .env.example .env
+npm install
+npm start
+```
+
+
 
 ### init setup
 
