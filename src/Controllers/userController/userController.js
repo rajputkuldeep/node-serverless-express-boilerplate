@@ -1,6 +1,10 @@
 const Models  =require("../../models");
 
-
+/**
+ * @description this function for the list of users.
+ * @param req
+ * @param res
+ */
 module.exports.getListOfUsers = async (req, res) => {
     try {
         const data = await Models.User.findAll();
@@ -16,6 +20,12 @@ module.exports.getListOfUsers = async (req, res) => {
     }
 };
 
+
+/**
+ * @description this function for get user from the userId.
+ * @param req
+ * @param res
+ */
 module.exports.getUserDataFromId = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -43,6 +53,13 @@ module.exports.getUserDataFromId = async (req, res) => {
 };
 
 
+
+
+/**
+ * @description this function for delete particular user.
+ * @param req
+ * @param res
+ */
 module.exports.deleteUser = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -62,6 +79,13 @@ module.exports.deleteUser = async (req, res) => {
     }
 };
 
+
+
+/**
+ * @description For the create user.
+ * @param req
+ * @param res
+ */
 module.exports.createUser = async (req, res) => {
     try {
         const {name} = req.body;

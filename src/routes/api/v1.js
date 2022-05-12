@@ -1,4 +1,4 @@
-const {getListOfUsers, getUserDataFromId, createUser, deleteUser} =  require("../../Controllers/UserController/UserController.js");
+const {getListOfUsers, getUserDataFromId, createUser, deleteUser} =  require("../../Controllers/userController/UserController.js");
 
 const userRoute = require("express").Router();
 
